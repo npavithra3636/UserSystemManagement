@@ -33,6 +33,10 @@ public class DBConnection {
             password = DEFAULT_PASSWORD;
         }
 
-        return DriverManager.getConnection(url, username, password);
+        if (url.startsWith("mysql://")) {
+    url = "jdbc:" + url;
+}
+
+return DriverManager.getConnection(url, username, password);
     }
 }
