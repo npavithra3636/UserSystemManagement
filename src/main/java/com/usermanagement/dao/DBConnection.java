@@ -9,19 +9,17 @@ public class DBConnection {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String host = System.getenv("MYSQLHOST");
-        String port = System.getenv("MYSQLPORT");
-        String database = System.getenv("MYSQLDATABASE");
-        String username = System.getenv("MYSQLUSER");
-        String password = System.getenv("MYSQLPASSWORD");
+        String url = System.getenv("DB_URL");
+        String user = System.getenv("DB_USER");
+        String password = System.getenv("DB_PASSWORD");
 
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database
-                + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-                System.out.println("HOST = " + System.getenv("MYSQLHOST"));
-System.out.println("PORT = " + System.getenv("MYSQLPORT"));
-System.out.println("DATABASE = " + System.getenv("MYSQLDATABASE"));
-System.out.println("USER = " + System.getenv("MYSQLUSER"));
+        if (url != null && !url.isEmpty()) {
+            return DriverManager.getConnection(url, user, password);
+        }
 
-        return DriverManager.getConnection(url, username, password);
+        return DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/user_management",
+                "root",
+                "devi");
     }
 }
