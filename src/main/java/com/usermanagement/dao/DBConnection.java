@@ -6,11 +6,12 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    private static final String url =
-    "jdbc:mysql://MYSQLHOST:MYSQLPORT/MYSQLDATABASE";
+    private static final String DEFAULT_URL =
+        "jdbc:mysql://localhost:3306/user_management";
 
-private static final String user = "MYSQLUSER";
-private static final String pass = "MYSQLPASSWORD";
+private static final String DEFAULT_USERNAME = "root";
+
+private static final String DEFAULT_PASSWORD = "devi";
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
 
