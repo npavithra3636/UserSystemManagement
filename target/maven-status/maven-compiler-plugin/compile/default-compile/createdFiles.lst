@@ -1,0 +1,7 @@
+com\usermanagement\service\UserService.class
+com\usermanagement\resource\LoginResource.class
+com\usermanagement\filter\AuthenticationFilter.class
+com\usermanagement\model\User.class
+com\usermanagement\dao\DBConnection.class
+com\usermanagement\resource\UserResource.class
+com\usermanagement\dao\UserDAO.class
