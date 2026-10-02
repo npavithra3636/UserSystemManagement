@@ -9,7 +9,7 @@ public class DBConnection {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String dbUrl = System.getenv("DB_URL");
+        String dbUrl = System.getenv("MYSQL_PRIVATE_URL");
 
         if (dbUrl != null && !dbUrl.isEmpty()) {
             return DriverManager.getConnection(dbUrl);
