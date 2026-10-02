@@ -16,27 +16,26 @@ public class DBConnection {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String url = System.getenv("DB_URL");
-        String username = System.getenv("DB_USER");
-        String password = System.getenv("DB_PASSWORD");
+        String host = System.getenv("MYSQLHOST");
+        String port = System.getenv("MYSQLPORT");
+        String database = System.getenv("MYSQLDATABASE");
+        String username = System.getenv("MYSQLUSER");
+        String password = System.getenv("MYSQLPASSWORD");
 
-        // Use local MySQL when running on your computer
-        if (url == null || url.isEmpty()) {
+        String url;
+
+        if (host != null && !host.isEmpty()) {
+
+            url = "jdbc:mysql://" + host + ":" + port + "/" + database
+                    + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
+        } else {
+
             url = DEFAULT_URL;
-        }
-
-        if (username == null || username.isEmpty()) {
             username = DEFAULT_USERNAME;
-        }
-
-        if (password == null || password.isEmpty()) {
             password = DEFAULT_PASSWORD;
         }
 
-        if (url.startsWith("mysql://")) {
-    url = "jdbc:" + url;
-}
-
-return DriverManager.getConnection(url, username, password);
+        return DriverManager.getConnection(url, username, password);
     }
 }
