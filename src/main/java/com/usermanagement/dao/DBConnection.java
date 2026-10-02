@@ -9,11 +9,17 @@ public class DBConnection {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String url = System.getenv("DB_URL");
-        String user = System.getenv("DB_USER");
-        String password = System.getenv("DB_PASSWORD");
+        String host = System.getenv("MYSQLHOST");
+        String port = System.getenv("MYSQLPORT");
+        String database = System.getenv("MYSQLDATABASE");
+        String user = System.getenv("MYSQLUSER");
+        String password = System.getenv("MYSQLPASSWORD");
 
-        if (url != null && !url.isEmpty()) {
+        if (host != null && !host.isEmpty()) {
+
+            String url = "jdbc:mysql://" + host + ":" + port + "/" + database
+                    + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
             return DriverManager.getConnection(url, user, password);
         }
 
