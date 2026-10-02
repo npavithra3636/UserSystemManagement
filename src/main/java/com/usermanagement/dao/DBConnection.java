@@ -23,6 +23,10 @@ public class DBConnection {
         String password = System.getenv("MYSQLPASSWORD");
 
         String url;
+        System.out.println("MYSQLHOST = " + host);
+System.out.println("MYSQLPORT = " + port);
+System.out.println("MYSQLDATABASE = " + database);
+System.out.println("MYSQLUSER = " + username);
 
         if (host != null && !host.isEmpty()) {
 
@@ -35,7 +39,7 @@ public class DBConnection {
             username = DEFAULT_USERNAME;
             password = DEFAULT_PASSWORD;
         }
-
+        
         return DriverManager.getConnection(url, username, password);
     }
 }
